@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "lint": "eslint .",
+    "test": "jest",
+    "test:lint": "pnpm run lint && pnpm run test"
   },
   "dependencies": {
     "react": "^18.3.1",

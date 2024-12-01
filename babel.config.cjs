@@ -7,5 +7,6 @@ module.exports = {
         runtime: 'automatic', // Esto asegura que React no necesite ser importado explícitamente
       }
     ]
-  ]
+  ],
+  plugins: ['@babel/plugin-transform-modules-commonjs']
 };
