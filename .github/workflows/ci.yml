@@ -1,4 +1,4 @@
-name: CI
+name: CI Workflow
 
 on:
   pull_request:
@@ -8,6 +8,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -15,32 +16,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '18'  # Ajusta la versión de Node.js según tu proyecto
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: |
-          pnpm install
+        run: pnpm install
 
       - name: Run linter
-        run: |
-          pnpm run lint
-
-  test:
-    runs-on: ubuntu-latest
-    needs: lint
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: |
-          pnpm install
+        run: pnpm run lint
 
       - name: Run tests
-        run: |
-          pnpm run test
+        run: pnpm run test
