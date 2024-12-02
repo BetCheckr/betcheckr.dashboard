@@ -128,3 +128,6 @@ Futuras características:
 - Funcionalidad de predicciones personalizadas.
 - Soporte para múltiples idiomas y monedas.
 - Mejoras en la visualización de estadísticas.
+
+  ## Mas Info
+  [Notion Kickstart Document](https://www.notion.so/BetCheckr-Name-TBD-Kickstart-14f432cf33c680e58099c12ad440d8cd?pvs=4)
