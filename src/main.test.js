@@ -19,7 +19,7 @@ describe('Index file', () => {
     document.body.appendChild(rootElement);
 
     // Importa el archivo main.jsx
-    require('./main.jsx');
+    require('./main.js');
 
     // Verifica que createRoot haya sido llamado con el elemento correcto
     expect(createRoot).toHaveBeenCalledWith(rootElement);

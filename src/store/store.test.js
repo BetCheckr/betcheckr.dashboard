@@ -1,5 +1,5 @@
 import { act } from 'react';
-import useStore from './useStore';
+import useStore from './store';
 
 describe('useStore', () => {
   afterEach(() => {

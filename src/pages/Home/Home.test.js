@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import HomePage from './HomePage';
+import HomePage from './Home';
 
 describe('HomePage Component', () => {
   it('renders the header and link correctly', () => {
@@ -16,7 +16,7 @@ describe('HomePage Component', () => {
     expect(header).toBeInTheDocument();
 
     // Verify the link is rendered and has the correct attributes
-    const link = screen.getByRole('link', { name: /Go to Bet 1/i });
+    const link = screen.getByRole('link', { name: /Go to Example Page/i });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute('href', '/bet/1');
   });
