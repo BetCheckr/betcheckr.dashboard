@@ -1,4 +1,4 @@
-# BetCheckr 
+# BetCheckr
 
 **BetCheckr** es una aplicación web diseñada para verificar la precisión de las predicciones de tipsters en apuestas deportivas. El objetivo principal de la plataforma es fomentar la transparencia y reducir el riesgo de estafas en la comunidad de apuestas. Los usuarios pueden acceder a estadísticas de tipsters, comprobar la fiabilidad de sus predicciones y tomar decisiones más informadas.
 
