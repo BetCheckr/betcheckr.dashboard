@@ -4,7 +4,7 @@
 
 ---
 
-## Características
+## Características 
 
 - **Verificación de Predicciones**: Compara las predicciones de los tipsters con los resultados reales para calcular la precisión.
 - **Perfil de Tipsters**: Los usuarios pueden visualizar estadísticas detalladas sobre el rendimiento histórico de los tipsters.
