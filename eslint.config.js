@@ -6,7 +6,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import pluginJest from 'eslint-plugin-jest';
 
 export default [
-  { ignores: ['dist', 'node_modules', '.eslintrc.js', 'babel.config.js', 'coverage'] },
+  { ignores: ['dist', 'node_modules', '.eslintrc.js', 'babel.config.js', 'coverage', 'jest.setup.js'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
