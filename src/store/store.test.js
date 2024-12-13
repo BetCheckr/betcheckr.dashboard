@@ -1,5 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
-import sidebarReducer, { updateActiveMenuItem, updateIsMobileMenuOpen } from './components/sidebar.store';
+import { updateActiveMenuItem, updateIsMobileMenuOpen } from './components/sidebar.store';
 import store from './store';
 
 describe('Redux Store', () => {
