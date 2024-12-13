@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Search } from 'lucide-react'
+import PropTypes from 'prop-types';
 
 const categories = ['All', 'Football', 'Basketball', 'Tennis', 'Horse Racing']
 
@@ -56,3 +57,7 @@ export function TipsterSearch({ onSearch, onCategoryChange }) {
   )
 }
 
+TipsterSearch.propTypes = {
+  onSearch: PropTypes.func,
+  onCategoryChange: PropTypes.func
+};

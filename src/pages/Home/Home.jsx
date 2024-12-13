@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ArrowUpIcon, ArrowDownIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid'
-import { MenuIcon, Trophy, Users, AlertTriangle, ChevronRight, BarChart3, X } from 'lucide-react'
+import { MenuIcon, Trophy, Users, AlertTriangle } from 'lucide-react'
 import PerformanceChart from '@components/PerformanceChart/PerformanceChart.jsx'
 import { TipsterSearch } from '@components/TipsterSearch/TipsterSearch.jsx'
 import { Sidebar } from '@components/Sidebar/Sidebar.jsx'
@@ -22,7 +22,7 @@ const recentPredictions = [
   { tipster: 'Mike Johnson', match: 'Nadal vs Djokovic', prediction: 'Nadal to win', result: 'Win' },
 ]
 
-function HomePage() {
+export const HomePage = () => {
   const [tipsters, setTipsters] = useState(allTipsters)
   const activeMenuItem = useSelector(state => state.sidebar.activeMenuItem);
   const isMobileMenuOpen = useSelector(state => state.sidebar.isMobileMenuOpen);
@@ -286,5 +286,3 @@ function HomePage() {
   //   </div>
   // );
 }
-
-export default HomePage;

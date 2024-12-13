@@ -2,6 +2,7 @@ import { cn } from "@utils/utils"
 import { useSelector, useDispatch } from 'react-redux';
 import { updateActiveMenuItem, updateIsMobileMenuOpen } from '@store/components/sidebar.store'
 import { Trophy, Users, BarChart3, X } from 'lucide-react'
+import PropTypes from 'prop-types';
 
 export function Sidebar({ isMobile = false }) {
   const activeMenuItem = useSelector(state => state.sidebar.activeMenuItem);
@@ -51,3 +52,7 @@ export function Sidebar({ isMobile = false }) {
     </nav>
   )
 }
+
+Sidebar.propTypes = {
+  isMobile: PropTypes.bool,
+};

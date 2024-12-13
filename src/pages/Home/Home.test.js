@@ -1,23 +1,61 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import HomePage from './Home';
+import { render, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import store from '@store/store';
+import { HomePage } from './Home';
 
-describe('HomePage Component', () => {
-  it('renders the header and link correctly', () => {
-    // Render the component wrapped in MemoryRouter for routing support
-    render(
-      <MemoryRouter>
+describe('Home Component', () => {
+  test('should render HomePage correctly with active menu', () => {
+    const { getByRole } = render(
+      <Provider store={store}>
         <HomePage />
-      </MemoryRouter>
+      </Provider>
     );
 
-    // Verify the header text is rendered
-    const header = screen.getByText(/Welcome to BetCheckr HomePage/i);
-    expect(header).toBeInTheDocument();
+    const dashboardButton = getByRole('button', { name: /Dashboard/i });
+    const settingsButton = getByRole('button', { name: /Tipsters/i });
+    const profileButton = getByRole('button', { name: /Statistics/i });
 
-    // Verify the link is rendered and has the correct attributes
-    const link = screen.getByRole('link', { name: /Go to Example Page/i });
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', '/bet/1');
+    expect(dashboardButton).toBeInTheDocument();
+    expect(settingsButton).toBeInTheDocument();
+    expect(profileButton).toBeInTheDocument();
+  });
+
+  test('should toggle mobile menu when button is clicked', () => {
+    const { getByLabelText, getAllByRole } = render(
+      <Provider store={store}>
+        <HomePage />
+      </Provider>
+    );
+
+    expect(getByLabelText('Open menu')).toBeInTheDocument();
+    fireEvent.click(getByLabelText('Open menu'));
+    const dashboardButton = getAllByRole('button', { name: /Dashboard/i });
+    expect(dashboardButton.length).toBeGreaterThan(0);
+  });
+
+  test('should filter tipsters based on category', () => {
+    const { getByText, getByRole } = render(
+      <Provider store={store}>
+        <HomePage />
+      </Provider>
+    );
+
+    fireEvent.click(getByRole('button', { name: /Football/i }));
+
+    expect(getByText('John Doe')).toBeInTheDocument();
+    expect(getByText('Tom Brown')).toBeInTheDocument();
+  });
+
+  test('should display recent predictions correctly', () => {
+    const {getByRole} = render(
+      <Provider store={store}>
+        <HomePage />
+      </Provider>
+    );
+
+    expect(getByRole('heading', { name: /Recent Predictions/i })).toBeInTheDocument();
   });
 });
+
+
+

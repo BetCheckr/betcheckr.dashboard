@@ -1,35 +1,41 @@
-import { act } from 'react';
-import useStore from './store';
+import { configureStore } from '@reduxjs/toolkit';
+import sidebarReducer, { updateActiveMenuItem, updateIsMobileMenuOpen } from './components/sidebar.store';
+import store from './store';
 
-describe('useStore', () => {
-  afterEach(() => {
-    // Reset the store after each test
-    act(() => {
-      useStore.setState({ bets: [] });
-    });
+describe('Redux Store', () => {
+  it('should be configured with the correct reducer for sidebar', () => {
+    const state = store.getState();
+    expect(state.sidebar).toBeDefined(); // Verifica que el reducer de sidebar esté en el estado
   });
 
-  it('should add a bet', () => {
-    const { addBet } = useStore.getState();
-
-    act(() => {
-      addBet({ id: 1, name: 'Bet 1' });
-    });
-
-    const bets = useStore.getState().bets;
-    expect(bets).toEqual([{ id: 1, name: 'Bet 1' }]);
+  it('should have the correct initial state for sidebar', () => {
+    const initialState = store.getState().sidebar;
+    const expectedInitialState = {
+      activeMenuItem: 'dashboard',
+      isMobileMenuOpen: false,
+    };
+    expect(initialState).toEqual(expectedInitialState);
   });
 
-  it('should remove a bet', () => {
-    const { addBet, removeBet } = useStore.getState();
+  it('should update activeMenuItem when updateActiveMenuItem action is dispatched', () => {
+    store.dispatch(updateActiveMenuItem('statistics'));
+    const state = store.getState().sidebar;
+    expect(state.activeMenuItem).toBe('statistics');
+  });
 
-    act(() => {
-      addBet({ id: 1, name: 'Bet 1' });
-      addBet({ id: 2, name: 'Bet 2' });
-      removeBet(1);
-    });
+  it('should update isMobileMenuOpen when updateIsMobileMenuOpen action is dispatched', () => {
+    store.dispatch(updateIsMobileMenuOpen(true)); // Despacha la acción
+    const state = store.getState().sidebar;
+    expect(state.isMobileMenuOpen).toBe(true); // Verifica que isMobileMenuOpen haya cambiado a 'true'
+  });
 
-    const bets = useStore.getState().bets;
-    expect(bets).toEqual([{ id: 2, name: 'Bet 2' }]);
+  it('should toggle isMobileMenuOpen state correctly', () => {
+    store.dispatch(updateIsMobileMenuOpen(true)); // Despacha para abrir el menú
+    let state = store.getState().sidebar;
+    expect(state.isMobileMenuOpen).toBe(true); // Verifica que el menú esté abierto
+
+    store.dispatch(updateIsMobileMenuOpen(false)); // Despacha para cerrar el menú
+    state = store.getState().sidebar;
+    expect(state.isMobileMenuOpen).toBe(false); // Verifica que el menú esté cerrado
   });
 });

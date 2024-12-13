@@ -4,7 +4,7 @@ import sidebarReducer from './components/sidebar.store';
 // Configuración del store
 const store = configureStore({
   reducer: {
-    sidebar: sidebarReducer
+    sidebar: sidebarReducer,
   },
 });
 
