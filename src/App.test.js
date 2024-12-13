@@ -1,20 +1,17 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import { App } from './App.jsx';
 
-jest.mock('./pages/HomePage', () => {
-  const MockHomePage = () => <div>HomePage Mock</div>;
-  MockHomePage.displayName = 'HomePage';
-  return MockHomePage;
-});
+describe('App Component', () => {
+  test('renders without crashing', () => {
+    const { getByRole } = render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
 
-jest.mock('./pages/BetPage', () => {
-  const MockBetPage = () => <div>BetPage Mock</div>;
-  MockBetPage.displayName = 'BetPage';
-  return MockBetPage;
-});
-
-test('renders HomePage by default', () => {
-  render(<App />);
-
-  expect(screen.getByText('HomePage Mock')).toBeInTheDocument();
+    const dashboardElement = getByRole('heading', { name: /Dashboard/i });
+    expect(dashboardElement).toBeInTheDocument();
+  });
 });

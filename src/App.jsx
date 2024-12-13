@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import BetPage from './pages/BetPage';
+import { HomePage } from '@pages/Home/Home';
 
-function App() {
+export const App = () => {
   return (
     <Router>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/bet/:id" element={<BetPage />} />
-    </Routes>
-  </Router>
+      <div data-testid="app-root">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          {/* <Route path="/dashboard" element={<HomePage />} />
+          <Route path="/tipsters" element={<TipstersPage />} /> */}
+        </Routes>
+      </div>
+    </Router>
   )
 }
-
-export default App
